@@ -1,0 +1,74 @@
+---
+openshift_cluster_ingress_domain: apps.cluster-xnxwl.xnxwl.sandbox832.opentlc.com
+ep_url: http://etherpad-labs.{{ openshift_cluster_ingress_domain }}
+aap_controller_web_url: https://aap-aap.{{ openshift_cluster_ingress_domain }}
+eda_controller_web_url: https://eda-controller-aap.{{ openshift_cluster_ingress_domain }}
+showroom_primary_view_url: https://showroom-showroom-wsvc4.{{ openshift_cluster_ingress_domain }}
+dynatrace_portal: https://bnk46244.live.dynatrace.com/
+#
+# get the apikey like this:
+# oc rsh -n labs $(oc get pods -n labs -o json |jq -r '.items[].metadata | select(.name | test("etherpad-[^m][^y][^s][^q][^l]")) | .name') cat APIKEY.txt
+#
+ep_api_key: 580feb176631b939c3e13df48c103414181352448b8ca9331caef2dfe4fc1f26
+
+welcome_text: |-
+  Welcome to Event Driven Ansible and Dynatrace escape room!
+
+  This page contains the links to tools we need today.
+  Please login to the following links in different browser tabs/windows. You will be needing all of them
+
+  Escape room story and help pages
+
+  Read through the instructions
+  {{ showroom_primary_view_url }}
+
+  Dynatrace portal
+  {{ dynatrace_portal }}
+  Username:
+  Password:
+
+  Event Driven Ansible
+  {{ eda_controller_web_url }}
+  N below is your team number
+  Username: userN
+  Password:
+
+  Ansible Automation Controller
+  {{ aap_controller_web_url }}
+  N below is your team number
+  Username: userN
+  Password:
+
+  *ETHERPAD TEAM LINKS*
+  {{ ep_url }}/p/team1
+  {{ ep_url }}/p/team2
+  {{ ep_url }}/p/team3
+  {{ ep_url }}/p/team4
+  {{ ep_url }}/p/team5
+  {{ ep_url }}/p/team6
+  {{ ep_url }}/p/team7
+  {{ ep_url }}/p/team8
+  {{ ep_url }}/p/team9
+  {{ ep_url }}/p/team10
+  {{ ep_url }}/p/team11
+  {{ ep_url }}/p/team12
+  {{ ep_url }}/p/team13
+  {{ ep_url }}/p/team14
+  {{ ep_url }}/p/team15
+
+team_text: |
+  Welcome to Event Driven Ansible and Dynatrace escape room!
+
+  Team{{ item }}
+
+
+  Private email for Dynatrace:
+
+  Write answers into chat box in right bottom chat.
+
+
+qa_text: |-
+  Test questions for the instructor to use: (copy paste from google slide)
+
+  1. How many user sessions have there been in the Easy Travel app during the past 72 hours?
+  A: 13

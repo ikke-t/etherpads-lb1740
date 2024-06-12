@@ -1,0 +1,39 @@
+---
+
+- name: Create welcome pad
+  ignore_errors: true
+  register: result
+  ansible.builtin.uri:
+    url: '{{ ep_url }}/api/1/createPad?apikey={{ ep_api_key }}&padID=welcome&text={{
+      welcome_text | urlencode }}'
+    method: GET
+    return_content: true
+    status_code: 200
+# - name: welcome debug
+#   debug: var=result
+
+- name: Create team pads
+  ignore_errors: true
+  register: result
+  ansible.builtin.uri:
+    url: '{{ ep_url }}/api/1/createPad?apikey={{ ep_api_key }}&padID=team{{
+      item }}&text={{ team_text | urlencode }}'
+    method: GET
+    return_content: true
+    status_code: 200
+  loop: '{{ range(1, 16) | list }}'
+# - name: team debug
+#   debug: var=result
+
+- name: Create qa pad
+  ignore_errors: true
+  register: result
+  ansible.builtin.uri:
+    url: '{{ ep_url }}/api/1/createPad?apikey={{ ep_api_key }}&padID=qa&text={{
+      qa_text | urlencode }}'
+    method: GET
+    return_content: true
+    status_code: 200
+    body_format: form-urlencoded
+# - name: qa debug
+#   debug: var=result

@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  gather_facts: false
+  # remote_user: root
+  roles: [etherpads-lb1740]
